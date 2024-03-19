@@ -1,5 +1,5 @@
 import ShopDetail from "@/components/(Shop_Components)/ShopDetail";
-
+import { Suspense } from "react";
 const getData = async () => {
   const res = await fetch("https://fakestoreapi.com/products");
 
@@ -11,8 +11,8 @@ const getData = async () => {
 export default async function Home() {
   const data = await getData();
   return (
-    <>
+    <Suspense fallback={<div>Loading</div>}>
       <ShopDetail products={data} />
-    </>
+    </Suspense>
   );
 }
